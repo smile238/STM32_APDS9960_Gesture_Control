@@ -1,6 +1,7 @@
 # STM32_APDS9960_Gesture_Control
 基于STM32F103和APDS9960手势传感器的安全警示系统。手势滑动切换安全等级界面，LED实时反馈。
 
+## 硬件演示
 ![演示](Images/demo.gif)
 
 ## 项目简介
