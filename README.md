@@ -44,7 +44,7 @@
 
 ## 核心代码
 
-### 手势识别（最终稳定版）
+### 手势识别
 ```c
 void Menu_key_set(void)
 {
@@ -57,25 +57,36 @@ void Menu_key_set(void)
     uint8_t r = read_reg(0xFF);
     
     if(init == 0) {
-        last_l = l; last_r = r; init = 1; return;
+        last_l = l;
+        last_r = r;
+        init = 1;
+        return;
     }
     
     int16_t diff_l = l - last_l;
     int16_t diff_r = r - last_r;
     
     if(!gesture_lock) {
-        if(diff_r > 82 && diff_r > diff_l) {
-            func_index = (func_index + 1) % 4;
-            show_menu(func_index);
-            gesture_lock = 1;
-        }
-        else if(diff_l > 82 && diff_l > diff_r) {
-            func_index = (func_index + 3) % 4;
-            show_menu(func_index);
-            gesture_lock = 1;
-        }
-    }
+    /**
+     * 手势方向识别
+     * 物理原理：滑动方向 → 先感应的传感器 → 差值突增
+     */
     
+    // 向左滑：手从右向左 → R传感器先感应 → diff_r突增 → 下一个菜单
+        if(diff_r > 82 && diff_r > diff_l) {
+           func_index++;
+           if(func_index > 3) func_index = 0;
+           show_menu(func_index);
+           gesture_lock = 1;
+        }
+    // 向右滑：手从左向右 → L传感器先感应 → diff_l突增 → 上一个菜单
+        else if(diff_l > 82 && diff_l > diff_r) {
+           if(func_index > 0) func_index--;
+           else func_index = 3;
+           show_menu(func_index);
+           gesture_lock = 1;
+        }
+}
     if(gesture_lock) {
         lock_count++;
         if(lock_count > 20) {
@@ -87,5 +98,6 @@ void Menu_key_set(void)
     last_l = l;
     last_r = r;
 }
+
 
 > 📌 完整代码见：https://github.com/smile238/STM32_APDS9960_Gesture_Control
