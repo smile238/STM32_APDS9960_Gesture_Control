@@ -53,3 +53,15 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Keil 编译输出（针对STM32项目）
+*.crf
+*.lst
+*.bak
+*.dep
+*.uvguix.*
+*.uvopt
+*.uvprojx
+Objects/
+Listings/
+DebugConfig/
