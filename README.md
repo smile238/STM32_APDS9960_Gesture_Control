@@ -2,7 +2,7 @@
 基于STM32F103和APDS9960手势传感器，实现手势滑动切换安全等级界面，LED实时反馈状态。
 
 ## 演示视频
-📺 [点击观看演示视频](https://www.bilibili.com/video/你的BV号)
+📺 [点击观看演示视频](https://b23.tv/4dmc1lz)
 
 ## 功能演示
 | 手势 | 功能 | LED反馈 |
