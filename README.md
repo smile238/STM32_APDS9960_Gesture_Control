@@ -85,4 +85,4 @@ void Menu_key_set(void)
     last_r = r;
 }
 
-> 📌 完整代码见：
+> 📌 完整代码见：https://github.com/你的用户名/STM32_APDS9960_Gesture_Control
