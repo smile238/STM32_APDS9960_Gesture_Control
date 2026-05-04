@@ -12,7 +12,7 @@
 | 危险界面 | - | LED3常亮 |
 
 ## 硬件连接图
-![接线图](Images/wiring.jpg)
+![接线图](wiring.jpg)
 
 ### 引脚对照表
 | APDS9960 | STM32 | 说明 |
