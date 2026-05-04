@@ -204,7 +204,15 @@ bool setMode(int8_t mode, uint8_t enable)
     
     return true;
 }
-
+/*
+ * - 删除了冗余的setMode分步使能，改为一次性写入0x4D
+ * - 增加了GPULSE手势脉冲配置（原版缺失）
+ * - 每步增加延时，确保寄存器写入稳定
+ * - 配置顺序更合理：先关→配置→使能
+ * 
+ * 修改者：
+ * 修改日期：2026-05-04
+ */
 
 bool enableGestureSensor(bool interrupts)
 {
